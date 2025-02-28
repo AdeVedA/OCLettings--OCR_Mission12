@@ -46,6 +46,7 @@ jobs:
           pytest --cov=src --cov-report=term-missing --cov-fail-under=90
         env:
           SENTRY_DSN: "${{ secrets.SENTRY_DSN }}"
+          SECRET_KEY: "${{ secrets.SECRET_KEY_DJANGO }}"
 
       - run: echo "🍏 This job's status is ${{ job.status }}."
 
