@@ -44,6 +44,8 @@ jobs:
         run: |
           pytest --maxfail=1 --disable-warnings -q
           pytest --cov=src --cov-report=term-missing --cov-fail-under=90
+        env:
+          SENTRY_DSN: "${{ secrets.SENTRY_DSN }}"
 
       - run: echo "🍏 This job's status is ${{ job.status }}."
 
