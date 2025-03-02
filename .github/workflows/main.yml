@@ -85,13 +85,4 @@ jobs:
 
     steps:
       - name: Déclencher le déploiement sur Render
-        run: |
-          curl -X POST \
-            -H "Authorization: Bearer ${{secrets.RENDER_API_KEY}}" \
-            -d "{
-            "serviceId": "${{secrets.RENDER_SERVICE_ID}}",
-            "docker": {
-              "image": "${{secrets.DOCKER_IMAGE_NAME}}:${{ github.sha }}"
-            }
-            }" \
-            https://api.render.com/v1/services/deploy
+        run: curl "${{secrets.RENDER_HOOK}}:${{ github.sha }}"
