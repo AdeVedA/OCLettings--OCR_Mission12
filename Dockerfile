@@ -1,9 +1,9 @@
 # Utiliser une image Python officielle comme image de base
 FROM python:3.12-slim
 
-# Définir des variables d'environnement
-ENV PYTHONDONTWRITEBYTECODE=1
-ENV PYTHONUNBUFFERED=1
+# Définir des variables d'environnement (pas générer de __pycache__ et logs directs en terminal)
+ENV PYTHONDONTWRITEBYTECODE=1 \
+    PYTHONUNBUFFERED=1
 
 # Définir le répertoire de travail
 WORKDIR /app
@@ -25,8 +25,8 @@ ARG SECRET_KEY_DJANGO
 ENV SENTRY_DSN=${SENTRY_DSN}
 ENV SECRET_KEY=${SECRET_KEY_DJANGO}
 ENV DEBUG=0
-ENV ALLOWED_HOSTS=localhost,127.0.0.1
-ENV DJANGO_CSRF_TRUSTED_ORIGINS=https://localhost
+ENV ALLOWED_HOSTS=localhost,127.0.0.1,oclettings-d3cu.onrender.com
+ENV DJANGO_CSRF_TRUSTED_ORIGINS=https://localhost,https://oclettings-d3cu.onrender.com
 ENV DATABASE_ENGINE=sqlite3
 ENV DATABASE_NAME=oc-lettings-site.sqlite3
 

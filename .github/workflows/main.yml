@@ -78,7 +78,20 @@ jobs:
       - name: push docker image to docker hub
         run: docker push ${{ secrets.DOCKER_IMAGE_NAME }}:${{ github.sha }}
 
-#  deploy:
-#    name: Déploiement de l'image sur serveur de l'herbergeur Render
-#    runs-on: ubuntu-latest
-#    needs: build-and-push
+  deploy:
+    name: Déploiement sur Render
+    runs-on: ubuntu-latest
+    needs: build-and-push
+
+    steps:
+      - name: Déclencher le déploiement sur Render
+        run: |
+          curl -X POST \
+            -H "Authorization: Bearer ${{secrets.RENDER_API_KEY}}" \
+            -d "{
+            "serviceId": "${{secrets.RENDER_SERVICE_ID}}",
+            "docker": {
+              "image": "${{secrets.DOCKER_IMAGE_NAME}}:${{ github.sha }}"
+            }
+            }" \
+            https://api.render.com/v1/services/deploy
