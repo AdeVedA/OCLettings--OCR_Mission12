@@ -25,8 +25,8 @@ ARG SECRET_KEY_DJANGO
 ENV SENTRY_DSN=${SENTRY_DSN}
 ENV SECRET_KEY=${SECRET_KEY_DJANGO}
 ENV DEBUG=0
-ENV ALLOWED_HOSTS=localhost,127.0.0.1,oclettings-d3cu.onrender.com
-ENV DJANGO_CSRF_TRUSTED_ORIGINS=https://localhost,https://oclettings-d3cu.onrender.com
+ENV ALLOWED_HOSTS=localhost,127.0.0.1,oc-lettings-yua5.onrender.com
+ENV DJANGO_CSRF_TRUSTED_ORIGINS=https://localhost,https://oc-lettings-yua5.onrender.com
 ENV DATABASE_ENGINE=sqlite3
 ENV DATABASE_NAME=oc-lettings-site.sqlite3
 
