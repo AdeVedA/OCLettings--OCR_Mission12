@@ -78,7 +78,7 @@ jobs:
       - name: push docker image to docker hub
         run: docker push ${{ secrets.DOCKER_IMAGE_NAME }}:${{ github.sha }}
 
-  # DEPLOIEMENT AVEC LE HOOK RENDER
+  # DEPLOIEMENT AVEC LE RENDER HOOK
   deploy:
     name: Déploiement sur Render
     runs-on: ubuntu-latest
