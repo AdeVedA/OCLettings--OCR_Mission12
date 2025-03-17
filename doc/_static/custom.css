@@ -1,0 +1,14 @@
+h1 {
+    font-size: 30px !important; /* Titre principal */
+    color: #e78c00;
+}
+
+h2 {
+    font-size: 26px !important; /* Sous-titre */
+    color: #4462c7;
+}
+
+h3 {
+    font-size: 22px !important;
+    color: #6ebf26;
+}
