@@ -9,14 +9,6 @@ oc\_lettings\_site.apps module
    :show-inheritance:
    :undoc-members:
 
-oc\_lettings\_site.urls module
-------------------------------
-
-.. automodule:: oc_lettings_site.urls
-   :members:
-   :show-inheritance:
-   :undoc-members:
-
 oc\_lettings\_site.views module
 -------------------------------
 
