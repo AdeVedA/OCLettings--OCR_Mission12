@@ -3,7 +3,7 @@ from django.shortcuts import get_object_or_404, render
 from .models import Profile
 
 
-def profiles_index(request):
+def index(request):
     """
     Handle the request to display the list of profiles.
 
@@ -15,7 +15,7 @@ def profiles_index(request):
     """
     profiles_list = Profile.objects.all()
     context = {"profiles_list": profiles_list}
-    return render(request, "profiles/profiles_index.html", context)
+    return render(request, "profiles/index.html", context)
 
 
 def profile(request, username):

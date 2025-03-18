@@ -20,9 +20,9 @@ class ProfileViewsTest(TestCase):
         """
         Test the profiles index view to verify it displays all profiles.
         """
-        response = self.client.get(reverse("profiles:profiles_index"))
+        response = self.client.get(reverse("profiles:index"))
         self.assertEqual(response.status_code, 200)
-        self.assertTemplateUsed(response, "profiles/profiles_index.html")
+        self.assertTemplateUsed(response, "profiles/index.html")
         self.assertContains(response, "testuser1")
         self.assertContains(response, "testuser2")
 

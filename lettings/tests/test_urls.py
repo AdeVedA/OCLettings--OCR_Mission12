@@ -16,8 +16,8 @@ class LettingsURLsTest(SimpleTestCase):
         """
         Test if the lettings index URL properly resolves to lettings_index view.
         """
-        url = reverse("lettings:lettings_index")
-        self.assertEqual(resolve(url).func, views.lettings_index)
+        url = reverse("lettings:index")
+        self.assertEqual(resolve(url).func, views.index)
 
     def test_letting_url(self):
         """

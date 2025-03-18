@@ -35,9 +35,9 @@ class LettingsViewsTest(TestCase):
         Test if the lettings index view returns a 200 status code,
         uses the correct template, and contains the expected context data.
         """
-        response = self.client.get(reverse("lettings:lettings_index"))
+        response = self.client.get(reverse("lettings:index"))
         self.assertEqual(response.status_code, 200)
-        self.assertTemplateUsed(response, "lettings/lettings_index.html")
+        self.assertTemplateUsed(response, "lettings/index.html")
         self.assertIn("lettings_list", response.context)
 
     def test_letting_view(self):
