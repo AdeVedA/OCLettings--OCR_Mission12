@@ -15,7 +15,7 @@
 
 </div>
 
-## <img src="https://img.icons8.com/color/48/home--v1.png" width="30"> Présentation
+## <img src="https://img.icons8.com/color/48/home--v1.png" width="25"> Présentation
 
 **OC Lettings** est une **application Web Django** d'Orange County Lettings permettant de lister des *locations immobilières* et de présenter les *profils utilisateurs*.
 À partir d'un fork d'une version "beta", la mission était :
@@ -53,7 +53,7 @@
 
 ## ⚙️ Installation
 
-### <img src="https://img.icons8.com/color/48/checklist.png" width="30"> Prérequis
+### <img src="https://img.icons8.com/color/48/checklist.png" width="25"> Prérequis
 - Python 3.12+ ([Windows](https://www.python.org/ftp/python/3.12.9/python-3.12.9-amd64.exe) ou [Mac](https://www.python.org/ftp/python/3.12.9/python-3.12.9-macos11.pkg))
 - Git pour [Windows](https://github.com/git-for-windows/git/releases/download/v2.49.0.windows.1/Git-2.49.0-64-bit.exe) ou pour Mac :
   - install Homebrew :
@@ -70,7 +70,7 @@ en prod :
   - un compte GitHub avec un fork de ce projet
   - variables d'environnement définis en github secrets
 
-### <img src="https://img.icons8.com/color/48/windows-10.png" width="30"> Configuration Windows
+### <img src="https://img.icons8.com/color/48/windows-10.png" width="25"> Configuration Windows
 1. Cloner le repository:
 ```bash
   cd chemin\pour\mettre\le\project
@@ -107,7 +107,7 @@ en prod :
   python manage.py runserver
 ```
 6. Aller sur `http://localhost:8000` dans un navigateur.
-### <img src="https://img.icons8.com/color/48/linux.png" width="30"> <img src="https://img.icons8.com/color/48/mac-os.png" width="30"> Configuration Linux/MacOS
+### <img src="https://img.icons8.com/color/48/linux.png" width="25"> <img src="https://img.icons8.com/color/48/mac-os.png" width="25"> Configuration Linux/MacOS
 ```bash
 # Créer le dossier et cloner le repo
   cd /path/to/project/folder
@@ -131,7 +131,7 @@ en prod :
 # Aller sur `http://localhost:8000` dans un navigateur.
 ```
 
-#### <img src="https://img.icons8.com/color/48/checked-2.png" width="30"> Linting & Tests unitaires
+#### <img src="https://img.icons8.com/color/48/checked-2.png" width="25"> Linting & Tests unitaires
 
 - Mettez-vous à la racine du projet, activez l'environnement virtuel puis :
 - pour le linting :
@@ -143,14 +143,14 @@ en prod :
 - `pytest`
 ```
 
-#### <img src="https://img.icons8.com/color/48/control-panel.png" width="30"> Panel d'administration
+#### <img src="https://img.icons8.com/color/48/control-panel.png" width="25"> Panel d'administration
 
 - Aller sur `http://localhost:8000/admin`
 - Connectez-vous avec l'utilisateur `admin`, mot de passe `Abc1234!`
 
 ---
 
-## <img src="https://img.icons8.com/color/48/docker.png" width="30"> Utilisation de Docker
+## <img src="https://img.icons8.com/color/48/docker.png" width="25"> Utilisation de Docker
 
 ### 💻 Environnement local
 ```bash
@@ -166,7 +166,7 @@ docker run -p 8000:8000 \
            oclettings:latest
 ```
 
-### <img src="https://img.icons8.com/color/48/server.png" width="30"> Production
+### <img src="https://img.icons8.com/color/48/server.png" width="25"> Production
 - déclarez l'ensemble de ces variables dans votre GitHub Secrets Actions:
 DOCKERHUB_PASSWORD, DOCKERHUB_USERNAME, DOCKER_IMAGE_NAME, RENDER_HOOK, SECRET_KEY_DJANGO, SENTRY_DSN
 
@@ -177,9 +177,9 @@ Le workflow GitHub (`.github\workflows\main.yaml`) gèrera alors automatiquement
 
 ---
 
-## <img src="https://img.icons8.com/color/48/rocket.png" width="30"> Déploiement 
+## <img src="https://img.icons8.com/color/48/rocket.png" width="25"> Déploiement 
 
-### <img src="https://img.icons8.com/color/48/numbered-list.png" width="30"> Récapitulatif des étapes
+### <img src="https://img.icons8.com/color/48/numbered-list.png" width="25"> Récapitulatif des étapes
 1. **Tests** : Vérification du code (flake8) et exécution des tests unitaires avec couverture minimale de 80%
 2. **Build Docker** : Création d'une image contenant l'application
 3. **Push sur Docker Hub** : Stockage de l'image créée sur DockerHub
@@ -197,7 +197,7 @@ DOCKERHUB_PASSWORD
 DOCKER_IMAGE_NAME
 RENDER_HOOK
 
-### <img src="https://img.icons8.com/color/48/package.png" width="30"> Instructions de déploiement
+### <img src="https://img.icons8.com/color/48/package.png" width="25"> Instructions de déploiement
 1. **Pré-requis** : 
   - vos secrets GitHub décrits précédemment
 2. **Déploiement automatique** :
