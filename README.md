@@ -15,7 +15,7 @@
 
 </div>
 
-## <img src="https://img.icons8.com/color/48/home--v1.png" width="25"> Présentation
+## 🏠 Présentation
 
 **OC Lettings** est une **application Web Django** d'Orange County Lettings permettant de lister des *locations immobilières* et de présenter les *profils utilisateurs*.
 À partir d'un fork d'une version "beta", la mission était :
@@ -53,7 +53,7 @@
 
 ## ⚙️ Installation
 
-### <img src="https://img.icons8.com/color/48/checklist.png" width="25"> Prérequis
+### 📋 Prérequis
 - Python 3.12+ ([Windows](https://www.python.org/ftp/python/3.12.9/python-3.12.9-amd64.exe) ou [Mac](https://www.python.org/ftp/python/3.12.9/python-3.12.9-macos11.pkg))
 - Git pour [Windows](https://github.com/git-for-windows/git/releases/download/v2.49.0.windows.1/Git-2.49.0-64-bit.exe) ou pour Mac :
   - install Homebrew :
@@ -131,7 +131,7 @@ en prod :
 # Aller sur `http://localhost:8000` dans un navigateur.
 ```
 
-#### <img src="https://img.icons8.com/color/48/checked-2.png" width="25"> Linting & Tests unitaires
+#### ✅ Linting & Tests unitaires
 
 - Mettez-vous à la racine du projet, activez l'environnement virtuel puis :
 - pour le linting :
@@ -143,7 +143,7 @@ en prod :
 - `pytest`
 ```
 
-#### <img src="https://img.icons8.com/color/48/control-panel.png" width="25"> Panel d'administration
+#### 🛠️ Panel d'administration
 
 - Aller sur `http://localhost:8000/admin`
 - Connectez-vous avec l'utilisateur `admin`, mot de passe `Abc1234!`
@@ -166,7 +166,7 @@ docker run -p 8000:8000 \
            oclettings:latest
 ```
 
-### <img src="https://img.icons8.com/color/48/server.png" width="25"> Production
+### 🌍 Production
 - déclarez l'ensemble de ces variables dans votre GitHub Secrets Actions:
 DOCKERHUB_PASSWORD, DOCKERHUB_USERNAME, DOCKER_IMAGE_NAME, RENDER_HOOK, SECRET_KEY_DJANGO, SENTRY_DSN
 
@@ -197,7 +197,7 @@ DOCKERHUB_PASSWORD
 DOCKER_IMAGE_NAME
 RENDER_HOOK
 
-### <img src="https://img.icons8.com/color/48/package.png" width="25"> Instructions de déploiement
+### 📦 Instructions de déploiement
 1. **Pré-requis** : 
   - vos secrets GitHub décrits précédemment
 2. **Déploiement automatique** :
