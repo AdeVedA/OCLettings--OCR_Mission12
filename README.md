@@ -11,7 +11,7 @@
 
 </div>
 
-## $${\color{#6ebf26}Présentation}$$
+## <p align="left"><bold>$${\color{#6ebf26}Présentation}$$</bold></p>
 
 **OC Lettings** est une **application Web Django** d'Orange County Lettings permettant de lister des *locations immobilières* et de présenter les *profils utilisateurs*.
 À partir d'un fork d'une version "beta", la mission était :
@@ -28,7 +28,7 @@
 - Génération de la **documentation** via Sphinx et déploiement sur Read the Docs.
 
 
-## $${\color{#6ebf26}Architecture}$$
+## <p style="color : #6ebf26">Architecture</p>
 - **Applications Django** : 
   - `lettings` : Gère les annonces immobilières et leurs adresses
   - `profiles` : Gère les profils utilisateurs liés aux comptes Django
@@ -65,7 +65,7 @@ en prod :
   - un compte GitHub avec un fork de ce projet
   - variables d'environnement définis en github secrets
 
-### $${\color{#6ebf26}Configuration \space Windows}$$
+### Configuration Windows
 1. Cloner le repository:
 ```bash
   cd chemin\pour\mettre\le\project
