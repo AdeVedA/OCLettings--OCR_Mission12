@@ -1,7 +1,11 @@
 ![OrangeCountyLettings_Ad](https://user.oc-static.com/upload/2023/07/20/1689880374259_Orange%20County%20Lettings%20Ad.png)
 
 
-# <p align="center"><bold><img src="static\assets\img\logo.png" width="50"> **OC lettings** - Plateforme de locations</bold></p>
+<h1 align="center">
+    <img src="static/assets/img/logo.png" width="50" 
+         style="background: white; border-radius: 50%; padding: 5px;">
+    <b>OC Lettings</b> - Plateforme de locations
+</h1>
 
 <div align="center">
 
@@ -28,7 +32,7 @@
 - Génération de la **documentation** via Sphinx et déploiement sur Read the Docs.
 
 
-## <img src="https://img.icons8.com/color/48/architecture.png" width="30"> Architecture
+## 🏗️ Architecture
 
 - **Applications Django** : 
   - `lettings` : Gère les annonces immobilières et leurs adresses
@@ -39,7 +43,7 @@
   - Docker pour la mise en production
   - GitHub Actions pour le CI/CD
 
-### <img src="https://img.icons8.com/color/48/continuous-integration.png" width="30"> Pipeline CI/CD
+### 🔄 Pipeline CI/CD
 1. Tests automatisés (flake8 + pytest) sur chaque push sur `main`
 2. Build de l'image Docker si les tests réussissent
 3. Push de l'image Docker vers Docker Hub
@@ -47,7 +51,7 @@
 
 ---
 
-## <img src="https://img.icons8.com/color/48/installation.png" width="30"> Installation
+## ⚙️ Installation
 
 ### <img src="https://img.icons8.com/color/48/checklist.png" width="30"> Prérequis
 - Python 3.12+ ([Windows](https://www.python.org/ftp/python/3.12.9/python-3.12.9-amd64.exe) ou [Mac](https://www.python.org/ftp/python/3.12.9/python-3.12.9-macos11.pkg))
@@ -148,7 +152,7 @@ en prod :
 
 ## <img src="https://img.icons8.com/color/48/docker.png" width="30"> Utilisation de Docker
 
-### <img src="https://img.icons8.com/color/48/laptop-coding.png" width="30"> Environnement local
+### 💻 Environnement local
 ```bash
 # Construire l'image avec vos variables (ex: SECRET_KEY_DJANGO)
 docker build --build-arg SENTRY_DSN="${{ secrets.SENTRY_DSN }}" \
@@ -181,7 +185,7 @@ Le workflow GitHub (`.github\workflows\main.yaml`) gèrera alors automatiquement
 3. **Push sur Docker Hub** : Stockage de l'image créée sur DockerHub
 4. **Déclenchement Render** : Un hook Render pour déployer la nouvelle version
 
-### <img src="https://img.icons8.com/color/48/important.png" width="30"> Configuration requise
+### ⚠️ Configuration requise
 - Compte Docker Hub avec accès en écriture pour le repository configuré
 - Accès à Sentry (variable `SENTRY_DSN`)
 - Hook de déploiement Render disponible dans les secrets GitHub
