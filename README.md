@@ -1,5 +1,8 @@
 ![OrangeCountyLettings_Ad](https://user.oc-static.com/upload/2023/07/20/1689880374259_Orange%20County%20Lettings%20Ad.png)
 
+
+#  <p align="center"><bold>$${\color{#e8880c}OC \space lettings \space - \space Plateforme \space de \space locations}$$</bold></p>
+
 <div align="center">
 
   |      Site     |  Image Docker | Documentation |
@@ -8,10 +11,7 @@
 
 </div>
 
-
-# oc_lettings_site - Plateforme de locations
-
-## Présentation
+## $${\color{#6ebf26}Présentation}$$
 
 **OC Lettings** est une **application Web Django** d'Orange County Lettings permettant de lister des *locations immobilières* et de présenter les *profils utilisateurs*.
 À partir d'un fork d'une version "beta", la mission était :
@@ -28,7 +28,7 @@
 - Génération de la **documentation** via Sphinx et déploiement sur Read the Docs.
 
 
-## Architecture
+## $${\color{#6ebf26}Architecture}$$
 - **Applications Django** : 
   - `lettings` : Gère les annonces immobilières et leurs adresses
   - `profiles` : Gère les profils utilisateurs liés aux comptes Django
@@ -46,7 +46,7 @@
 
 ---
 
-## Installation
+## $${\color{#6ebf26}Installation}$$
 
 ### Prérequis
 - Python 3.12+ ([Windows](https://www.python.org/ftp/python/3.12.9/python-3.12.9-amd64.exe) ou [Mac](https://www.python.org/ftp/python/3.12.9/python-3.12.9-macos11.pkg))
@@ -56,7 +56,7 @@
     $ /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
     $ brew install git
     ```
-- Docker (pour la production) ([Windows](https://desktop.docker.com/win/main/amd64/Docker%20Desktop%20Installer.exe?utm_location=module) ou [Mac](https://desktop.docker.com/mac/main/arm64/Docker.dmg?utm_location=module))
+- Docker (pour la pré-production) ([Windows](https://desktop.docker.com/win/main/amd64/Docker%20Desktop%20Installer.exe?utm_location=module) ou [Mac](https://desktop.docker.com/mac/main/arm64/Docker.dmg?utm_location=module))
 
 en local :
   - variables d'environnement dans un fichier `.env`
@@ -65,7 +65,7 @@ en prod :
   - un compte GitHub avec un fork de ce projet
   - variables d'environnement définis en github secrets
 
-### Configuration Windows
+### $${\color{#6ebf26}Configuration \space Windows}$$
 1. Cloner le repository:
 ```bash
   cd chemin\pour\mettre\le\project
@@ -145,7 +145,7 @@ en prod :
 
 ---
 
-## Utilisation de Docker
+## $${\color{#6ebf26}Utilisation \space de \space Docker}$$
 
 ### Environnement local
 ```bash
@@ -172,7 +172,7 @@ Le workflow GitHub (`.github\workflows\main.yaml`) gèrera alors automatiquement
 
 ---
 
-## Déploiement 
+## $${\color{#6ebf26}Déploiement}$$
 
 ### Récapitulatif des étapes
 1. **Tests** : Vérification du code (flake8) et exécution des tests unitaires avec couverture minimale de 80%
@@ -203,21 +203,3 @@ RENDER_HOOK
   - Accédez à l'URL du serveur Render pour vérifier le fonctionnement
 
 ---
-
-
-<div style="display: flex; justify-content: center;">
-  
-  <table>
-    <tr>
-      <th>Site</th>
-      <th>Image Docker</th>
-      <th>Documentation</th>
-    </tr>
-    <tr>
-      <td><a href="https://oc-lettings-yua5.onrender.com/">OC-Lettings</a></td>
-      <td><a href="https://hub.docker.com/repository/docker/adeveda/oclettings/general">DockerHub</a></td>
-      <td><a href="https://oclettings-ocr-mission12.readthedocs.io/fr/latest/index.html">ReadTheDocs</a></td>
-    </tr>
-  </table>
-
-</div>
