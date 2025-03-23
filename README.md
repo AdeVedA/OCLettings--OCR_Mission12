@@ -1,7 +1,7 @@
 ![OrangeCountyLettings_Ad](https://user.oc-static.com/upload/2023/07/20/1689880374259_Orange%20County%20Lettings%20Ad.png)
 
 
-#  <p align="center"><bold>$${\color{#e8880c}OC \space lettings \space - \space Plateforme \space de \space locations}$$</bold></p>
+#  <p align="center">$${\color{#e8880c}OC \space lettings \space - \space Plateforme \space de \space locations}$$</p>
 
 <div align="center">
 
@@ -11,7 +11,7 @@
 
 </div>
 
-## <p align="left"><bold>$${\color{#6ebf26}Présentation}$$</bold></p>
+## <p align="left" style="color: #6ebf26; font-size: 30px; font-weight: bold;">Présentation</p>
 
 **OC Lettings** est une **application Web Django** d'Orange County Lettings permettant de lister des *locations immobilières* et de présenter les *profils utilisateurs*.
 À partir d'un fork d'une version "beta", la mission était :
@@ -28,7 +28,7 @@
 - Génération de la **documentation** via Sphinx et déploiement sur Read the Docs.
 
 
-## <p style="color : #6ebf26">Architecture</p>
+## <p style="color : #6ebf26, font-size: 30px; font-weight: bold;">Architecture</p>
 - **Applications Django** : 
   - `lettings` : Gère les annonces immobilières et leurs adresses
   - `profiles` : Gère les profils utilisateurs liés aux comptes Django
@@ -46,7 +46,7 @@
 
 ---
 
-## $${\color{#6ebf26}Installation}$$
+## <p align="left" style="color: #6ebf26; font-size: 30px; font-weight: bold;">$${\color{#6ebf26}Installation}$$</p>
 
 ### Prérequis
 - Python 3.12+ ([Windows](https://www.python.org/ftp/python/3.12.9/python-3.12.9-amd64.exe) ou [Mac](https://www.python.org/ftp/python/3.12.9/python-3.12.9-macos11.pkg))
