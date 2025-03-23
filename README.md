@@ -1,7 +1,7 @@
 ![OrangeCountyLettings_Ad](https://user.oc-static.com/upload/2023/07/20/1689880374259_Orange%20County%20Lettings%20Ad.png)
 
 
-#  <p align="center">$${\color{#e8880c}OC \space lettings \space - \space Plateforme \space de \space locations}$$</p>
+# <p align="center"><bold><img src="static\assets\img\logo.png" width="50"> **OC lettings** - Plateforme de locations</bold></p>
 
 <div align="center">
 
@@ -11,7 +11,7 @@
 
 </div>
 
-## <p align="left" style="color: #6ebf26; font-size: 30px; font-weight: bold;">Présentation</p>
+## <img src="https://img.icons8.com/color/48/home--v1.png" width="30"> Présentation
 
 **OC Lettings** est une **application Web Django** d'Orange County Lettings permettant de lister des *locations immobilières* et de présenter les *profils utilisateurs*.
 À partir d'un fork d'une version "beta", la mission était :
@@ -28,7 +28,8 @@
 - Génération de la **documentation** via Sphinx et déploiement sur Read the Docs.
 
 
-## <p style="color : #6ebf26, font-size: 30px; font-weight: bold;">Architecture</p>
+## <img src="https://img.icons8.com/color/48/architecture.png" width="30"> Architecture
+
 - **Applications Django** : 
   - `lettings` : Gère les annonces immobilières et leurs adresses
   - `profiles` : Gère les profils utilisateurs liés aux comptes Django
@@ -38,7 +39,7 @@
   - Docker pour la mise en production
   - GitHub Actions pour le CI/CD
 
-### Pipeline CI/CD
+### <img src="https://img.icons8.com/color/48/continuous-integration.png" width="30"> Pipeline CI/CD
 1. Tests automatisés (flake8 + pytest) sur chaque push sur `main`
 2. Build de l'image Docker si les tests réussissent
 3. Push de l'image Docker vers Docker Hub
@@ -46,9 +47,9 @@
 
 ---
 
-## <p align="left" style="color: #6ebf26; font-size: 30px; font-weight: bold;">$${\color{#6ebf26}Installation}$$</p>
+## <img src="https://img.icons8.com/color/48/installation.png" width="30"> Installation
 
-### Prérequis
+### <img src="https://img.icons8.com/color/48/checklist.png" width="30"> Prérequis
 - Python 3.12+ ([Windows](https://www.python.org/ftp/python/3.12.9/python-3.12.9-amd64.exe) ou [Mac](https://www.python.org/ftp/python/3.12.9/python-3.12.9-macos11.pkg))
 - Git pour [Windows](https://github.com/git-for-windows/git/releases/download/v2.49.0.windows.1/Git-2.49.0-64-bit.exe) ou pour Mac :
   - install Homebrew :
@@ -65,7 +66,7 @@ en prod :
   - un compte GitHub avec un fork de ce projet
   - variables d'environnement définis en github secrets
 
-### Configuration Windows
+### <img src="https://img.icons8.com/color/48/windows-10.png" width="30"> Configuration Windows
 1. Cloner le repository:
 ```bash
   cd chemin\pour\mettre\le\project
@@ -102,7 +103,7 @@ en prod :
   python manage.py runserver
 ```
 6. Aller sur `http://localhost:8000` dans un navigateur.
-### Configuration Linux/MacOS
+### <img src="https://img.icons8.com/color/48/linux.png" width="30"> <img src="https://img.icons8.com/color/48/mac-os.png" width="30"> Configuration Linux/MacOS
 ```bash
 # Créer le dossier et cloner le repo
   cd /path/to/project/folder
@@ -126,7 +127,7 @@ en prod :
 # Aller sur `http://localhost:8000` dans un navigateur.
 ```
 
-#### Linting & Tests unitaires
+#### <img src="https://img.icons8.com/color/48/checked-2.png" width="30"> Linting & Tests unitaires
 
 - Mettez-vous à la racine du projet, activez l'environnement virtuel puis :
 - pour le linting :
@@ -138,16 +139,16 @@ en prod :
 - `pytest`
 ```
 
-#### Panel d'administration
+#### <img src="https://img.icons8.com/color/48/control-panel.png" width="30"> Panel d'administration
 
 - Aller sur `http://localhost:8000/admin`
 - Connectez-vous avec l'utilisateur `admin`, mot de passe `Abc1234!`
 
 ---
 
-## $${\color{#6ebf26}Utilisation \space de \space Docker}$$
+## <img src="https://img.icons8.com/color/48/docker.png" width="30"> Utilisation de Docker
 
-### Environnement local
+### <img src="https://img.icons8.com/color/48/laptop-coding.png" width="30"> Environnement local
 ```bash
 # Construire l'image avec vos variables (ex: SECRET_KEY_DJANGO)
 docker build --build-arg SENTRY_DSN="${{ secrets.SENTRY_DSN }}" \
@@ -161,7 +162,7 @@ docker run -p 8000:8000 \
            oclettings:latest
 ```
 
-### Production
+### <img src="https://img.icons8.com/color/48/server.png" width="30"> Production
 - déclarez l'ensemble de ces variables dans votre GitHub Secrets Actions:
 DOCKERHUB_PASSWORD, DOCKERHUB_USERNAME, DOCKER_IMAGE_NAME, RENDER_HOOK, SECRET_KEY_DJANGO, SENTRY_DSN
 
@@ -172,15 +173,15 @@ Le workflow GitHub (`.github\workflows\main.yaml`) gèrera alors automatiquement
 
 ---
 
-## $${\color{#6ebf26}Déploiement}$$
+## <img src="https://img.icons8.com/color/48/rocket.png" width="30"> Déploiement 
 
-### Récapitulatif des étapes
+### <img src="https://img.icons8.com/color/48/numbered-list.png" width="30"> Récapitulatif des étapes
 1. **Tests** : Vérification du code (flake8) et exécution des tests unitaires avec couverture minimale de 80%
 2. **Build Docker** : Création d'une image contenant l'application
 3. **Push sur Docker Hub** : Stockage de l'image créée sur DockerHub
 4. **Déclenchement Render** : Un hook Render pour déployer la nouvelle version
 
-### Configuration requise
+### <img src="https://img.icons8.com/color/48/important.png" width="30"> Configuration requise
 - Compte Docker Hub avec accès en écriture pour le repository configuré
 - Accès à Sentry (variable `SENTRY_DSN`)
 - Hook de déploiement Render disponible dans les secrets GitHub
@@ -192,7 +193,7 @@ DOCKERHUB_PASSWORD
 DOCKER_IMAGE_NAME
 RENDER_HOOK
 
-### Instructions de déploiement
+### <img src="https://img.icons8.com/color/48/package.png" width="30"> Instructions de déploiement
 1. **Pré-requis** : 
   - vos secrets GitHub décrits précédemment
 2. **Déploiement automatique** :
