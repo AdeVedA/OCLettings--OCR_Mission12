@@ -9,16 +9,17 @@
 
 ## Étapes Installation
 
-1. Cloner le repository:
+1. Cloner le repository dans le répertoire de votre choix :
 
    ```bash
    git clone https://github.com/AdeVedA/OCLettings--OCR_Mission12.git
+   cd OCLettings--OCR_Mission12
    ```
 
 2. Créer un environnement virtuel:
    ```bash
-   python -m venv venv
-   venv\Scripts\activate # pour Windows | ou pour Linux : `source env/bin/activate` 
+   python -m venv venv # pour Windows | pour Linux : `python3 -m venv venv`
+   venv\Scripts\activate # pour Windows | pour Linux : `source env/bin/activate` 
    ```
 
 3. Installer les dépendances dans cet environnement activé:
@@ -26,7 +27,7 @@
    pip install -r requirements.txt
    ```
 
-4. Configurer les variables d'environnement dans un fichier à la racine du projet `.env.local` :
+4. Configurer les variables d'environnement dans un fichier à la racine du projet `.env` :
    ```ini
    # Django settings
    DEBUG=False
@@ -42,8 +43,8 @@
    SENTRY_DSN='{votre dsn sentry pour le projet}'
    ```
 
-5. Migrations et collecte de static files :
+5. Migrations et lancement du server :
    ```bash
    python manage.py migrate
-   python manage.py collectstatic --noinput
+   python manage.py runserver
    ```

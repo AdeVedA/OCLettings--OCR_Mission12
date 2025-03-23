@@ -1,77 +1,223 @@
-## Résumé
+![OrangeCountyLettings_Ad](https://user.oc-static.com/upload/2023/07/20/1689880374259_Orange%20County%20Lettings%20Ad.png)
 
-Site web d'Orange County Lettings
+<div align="center">
 
-## Développement local
+  |      Site     |  Image Docker | Documentation |
+  |---------------|---------------|---------------|
+  | [OC-Lettings](https://oc-lettings-yua5.onrender.com/) | [DockerHub](https://hub.docker.com/repository/docker/adeveda/oclettings/general) | [ReadTheDocs](https://oclettings-ocr-mission12.readthedocs.io/fr/latest/index.html) |
+
+</div>
+
+
+# oc_lettings_site - Plateforme de locations
+
+## Présentation
+
+**OC Lettings** est une **application Web Django** d'Orange County Lettings permettant de lister des *locations immobilières* et de présenter les *profils utilisateurs*.
+À partir d'un fork d'une version "beta", la mission était :
+- **refactorer** un projet django en **trois applications** (*architecture modulaire*, *migration des données* et gestion restructurée des *templates et URLs*)
+- Correction de **bugs**, amélioration du **linting**,
+- Gestion des **erreurs 404 et 500** (avec pages aux *images personnalisées*),
+- Écriture des **tests unitaires et d'intégration**,
+- **Docstrings et documentation** complète.
+- Détection et suivi/monitoring centralisé des erreurs avec logs structurés via **Sentry**.
+- Mise en place d'un **pipeline CI/CD** et **déploiement** :
+  - validation du **linting** flake8 et des **tests** pytest (pour une couverture supérieure à 80%),
+  - **build Docker** et push de l'image versionnée sur **DockerHub**,
+  - **déploiement** sur Render.
+- Génération de la **documentation** via Sphinx et déploiement sur Read the Docs.
+
+
+## Architecture
+- **Applications Django** : 
+  - `lettings` : Gère les annonces immobilières et leurs adresses
+  - `profiles` : Gère les profils utilisateurs liés aux comptes Django
+- **Base de données** : SQLite par défaut, configurable via variables d'environnement
+- **Outils** :
+  - Sentry pour le monitoring des erreurs
+  - Docker pour la mise en production
+  - GitHub Actions pour le CI/CD
+
+### Pipeline CI/CD
+1. Tests automatisés (flake8 + pytest) sur chaque push sur `main`
+2. Build de l'image Docker si les tests réussissent
+3. Push de l'image Docker vers Docker Hub
+4. Déploiement automatique sur Render grâce à un hook configuré dans GitHub Secrets
+
+---
+
+## Installation
 
 ### Prérequis
+- Python 3.12+ ([Windows](https://www.python.org/ftp/python/3.12.9/python-3.12.9-amd64.exe) ou [Mac](https://www.python.org/ftp/python/3.12.9/python-3.12.9-macos11.pkg))
+- Git pour [Windows](https://github.com/git-for-windows/git/releases/download/v2.49.0.windows.1/Git-2.49.0-64-bit.exe) ou pour Mac :
+  - install Homebrew :
+    ```bash
+    $ /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+    $ brew install git
+    ```
+- Docker (pour la production) ([Windows](https://desktop.docker.com/win/main/amd64/Docker%20Desktop%20Installer.exe?utm_location=module) ou [Mac](https://desktop.docker.com/mac/main/arm64/Docker.dmg?utm_location=module))
 
-- Compte GitHub avec accès en lecture à ce repository
-- Git CLI
-- SQLite3 CLI
-- Interpréteur Python, version 3.6 ou supérieure
+en local :
+  - variables d'environnement dans un fichier `.env`
 
-Dans le reste de la documentation sur le développement local, il est supposé que la commande `python` de votre OS shell exécute l'interpréteur Python ci-dessus (à moins qu'un environnement virtuel ne soit activé).
+en prod :
+  - un compte GitHub avec un fork de ce projet
+  - variables d'environnement définis en github secrets
 
-### macOS / Linux
+### Configuration Windows
+1. Cloner le repository:
+```bash
+  cd chemin\pour\mettre\le\project
+  git clone https://github.com/AdeVedA/OCLettings--OCR_Mission12.git
+  cd OCLettings--OCR_Mission12
+```
+2. Créer et activer l'environnement virtuel:
+```bash
+  python -m venv venv
+  venv\Scripts\activate
+```
+3. Installer les dépendances dans cet environnement activé:
+```bash
+  pip install -r requirements.txt
+```
+4. Configurer les variables d'environnement dans un fichier à la racine du projet `.env` :
+```ini
+  # Django settings
+  DEBUG=False
+  SECRET_KEY="votre secret_key django"
+  ALLOWED_HOSTS=localhost,127.0.0.1,{votre nom de domaine de production}
+  DJANGO_CSRF_TRUSTED_ORIGINS=https://localhost:8000,{votre url de production}
 
-#### Cloner le repository
+  # Database settings
+  DATABASE_ENGINE='sqlite3'
+  DATABASE_NAME='oc-lettings-site.sqlite3'
 
-- `cd /path/to/put/project/in`
-- `git clone https://github.com/OpenClassrooms-Student-Center/Python-OC-Lettings-FR.git`
+  # Sentry DSN
+  SENTRY_DSN='{votre dsn sentry pour le projet}'
+```
+5. Migrations & lancement du serveur :
+```bash
+  python manage.py migrate
+  python manage.py runserver
+```
+6. Aller sur `http://localhost:8000` dans un navigateur.
+### Configuration Linux/MacOS
+```bash
+# Créer le dossier et cloner le repo
+  cd /path/to/project/folder
+  git clone https://github.com/AdeVedA/OCLettings--OCR_Mission12.git
+  cd OCLettings--OCR_Mission12
 
-#### Créer l'environnement virtuel
+# Créer et activer l'environnement virtuel
+  python3 -m venv venv
+  source venv/bin/activate
 
-- `cd /path/to/Python-OC-Lettings-FR`
-- `python -m venv venv`
-- `apt-get install python3-venv` (Si l'étape précédente comporte des erreurs avec un paquet non trouvé sur Ubuntu)
-- Activer l'environnement `source venv/bin/activate`
-- Confirmer que la commande `python` exécute l'interpréteur Python dans l'environnement virtuel
-`which python`
-- Confirmer que la version de l'interpréteur Python est la version 3.6 ou supérieure `python --version`
-- Confirmer que la commande `pip` exécute l'exécutable pip dans l'environnement virtuel, `which pip`
-- Pour désactiver l'environnement, `deactivate`
+# Installation des dépendances
+  pip install -r requirements.txt
 
-#### Exécuter le site
+# Créer et configurer le fichier .env
+  (voir le point 4. de la config. windows)
 
-- `cd /path/to/Python-OC-Lettings-FR`
-- `source venv/bin/activate`
-- `pip install --requirement requirements.txt`
-- `python manage.py runserver`
-- Aller sur `http://localhost:8000` dans un navigateur.
-- Confirmer que le site fonctionne et qu'il est possible de naviguer (vous devriez voir plusieurs profils et locations).
+# Migrations & lancement du serveur
+  python manage.py migrate
+  python manage.py runserver
 
-#### Linting
+# Aller sur `http://localhost:8000` dans un navigateur.
+```
 
-- `cd /path/to/Python-OC-Lettings-FR`
-- `source venv/bin/activate`
-- `flake8`
+#### Linting & Tests unitaires
 
-#### Tests unitaires
-
-- `cd /path/to/Python-OC-Lettings-FR`
-- `source venv/bin/activate`
+- Mettez-vous à la racine du projet, activez l'environnement virtuel puis :
+- pour le linting :
+```bash
+  `flake8`
+```
+- pour les tests unitaires :
+```bash
 - `pytest`
-
-#### Base de données
-
-- `cd /path/to/Python-OC-Lettings-FR`
-- Ouvrir une session shell `sqlite3`
-- Se connecter à la base de données `.open oc-lettings-site.sqlite3`
-- Afficher les tables dans la base de données `.tables`
-- Afficher les colonnes dans le tableau des profils, `pragma table_info(Python-OC-Lettings-FR_profile);`
-- Lancer une requête sur la table des profils, `select user_id, favorite_city from
-  Python-OC-Lettings-FR_profile where favorite_city like 'B%';`
-- `.quit` pour quitter
+```
 
 #### Panel d'administration
 
 - Aller sur `http://localhost:8000/admin`
 - Connectez-vous avec l'utilisateur `admin`, mot de passe `Abc1234!`
 
-### Windows
+---
 
-Utilisation de PowerShell, comme ci-dessus sauf :
+## Utilisation de Docker
 
-- Pour activer l'environnement virtuel, `.\venv\Scripts\Activate.ps1` 
-- Remplacer `which <my-command>` par `(Get-Command <my-command>).Path`
+### Environnement local
+```bash
+# Construire l'image avec vos variables (ex: SECRET_KEY_DJANGO)
+docker build --build-arg SENTRY_DSN="${{ secrets.SENTRY_DSN }}" \
+             --build-arg SECRET_KEY_DJANGO="${{ secrets.SECRET_KEY_DJANGO }}" \
+             -t "${{ secrets.DOCKER_IMAGE_NAME }}:${{ github.sha }}" .
+
+# Exécuter le conteneur
+docker run -p 8000:8000 \
+           -e SECRET_KEY="votre_clé" \
+           -e SENTRY_DSN="votre_sentry_dsn" \
+           oclettings:latest
+```
+
+### Production
+- déclarez l'ensemble de ces variables dans votre GitHub Secrets Actions:
+DOCKERHUB_PASSWORD, DOCKERHUB_USERNAME, DOCKER_IMAGE_NAME, RENDER_HOOK, SECRET_KEY_DJANGO, SENTRY_DSN
+
+Le workflow GitHub (`.github\workflows\main.yaml`) gèrera alors automatiquement le déploiement :
+1. Les commits vers la branche `main` déclenchent les tests
+2. Si réussis, une nouvelle image Docker est construite et publiée sur votre Docker Hub
+3. Le hook Render est activé pour re-déployer automatiquement
+
+---
+
+## Déploiement 
+
+### Récapitulatif des étapes
+1. **Tests** : Vérification du code (flake8) et exécution des tests unitaires avec couverture minimale de 80%
+2. **Build Docker** : Création d'une image contenant l'application
+3. **Push sur Docker Hub** : Stockage de l'image créée sur DockerHub
+4. **Déclenchement Render** : Un hook Render pour déployer la nouvelle version
+
+### Configuration requise
+- Compte Docker Hub avec accès en écriture pour le repository configuré
+- Accès à Sentry (variable `SENTRY_DSN`)
+- Hook de déploiement Render disponible dans les secrets GitHub
+- Variables d'environnement nécessaires dans votre GitHub Secrets Actions (via *Settings > Secrets and variables*) :
+SECRET_KEY_DJANGO
+SENTRY_DSN
+DOCKERHUB_USERNAME
+DOCKERHUB_PASSWORD
+DOCKER_IMAGE_NAME
+RENDER_HOOK
+
+### Instructions de déploiement
+1. **Pré-requis** : 
+  - vos secrets GitHub décrits précédemment
+2. **Déploiement automatique** :
+  - Effectuez un push vers la branche `main`
+  - Le workflow GitHub déclenche les étapes de CI/CD
+  - Vérifiez le statut des jobs sur [GitHub Actions](https://github.com/[votre_repo]/actions)
+3. **Validation post-déploiement** :
+  - Accédez à l'URL du serveur Render pour vérifier le fonctionnement
+
+---
+
+
+<div style="display: flex; justify-content: center;">
+  
+  <table>
+    <tr>
+      <th>Site</th>
+      <th>Image Docker</th>
+      <th>Documentation</th>
+    </tr>
+    <tr>
+      <td><a href="https://oc-lettings-yua5.onrender.com/">OC-Lettings</a></td>
+      <td><a href="https://hub.docker.com/repository/docker/adeveda/oclettings/general">DockerHub</a></td>
+      <td><a href="https://oclettings-ocr-mission12.readthedocs.io/fr/latest/index.html">ReadTheDocs</a></td>
+    </tr>
+  </table>
+
+</div>

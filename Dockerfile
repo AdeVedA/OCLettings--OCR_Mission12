@@ -8,7 +8,7 @@ ENV PYTHONDONTWRITEBYTECODE=1 \
 # Définir le répertoire de travail
 WORKDIR /app
 
-# Installer les dépendances
+# Installer les dépendances et le serveur d'application
 COPY requirements.txt /app/
 RUN pip install --upgrade pip && \
     pip install -r requirements.txt && \
@@ -17,11 +17,11 @@ RUN pip install --upgrade pip && \
 # Copier le projet
 COPY . /app/
 
-# Arguments de build définis dans votre workflow GitHub Actions
+# Arguments de build définis dans le workflow GitHub Actions
 ARG SENTRY_DSN
 ARG SECRET_KEY_DJANGO
 
-# Définir les variables d'environnement
+# Définir les variables d'environnement de production
 ENV SENTRY_DSN=${SENTRY_DSN}
 ENV SECRET_KEY=${SECRET_KEY_DJANGO}
 ENV DEBUG=0
@@ -30,7 +30,8 @@ ENV DJANGO_CSRF_TRUSTED_ORIGINS=https://localhost,https://oc-lettings-yua5.onren
 ENV DATABASE_ENGINE=sqlite3
 ENV DATABASE_NAME=oc-lettings-site.sqlite3
 
-# Collecter les fichiers statiques pour whitenoise
+# Collecter les fichiers statiques vers STATIC_ROOT
+# pour Nginx ou whitenoise, sans interaction (--noinput) 
 RUN python manage.py collectstatic --noinput
 
 # Exposer le port sur lequel s'exécute l'application

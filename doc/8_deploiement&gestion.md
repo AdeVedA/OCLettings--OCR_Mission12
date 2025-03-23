@@ -126,13 +126,58 @@
    ```
 ---
 
+### Récapitulatif des étapes
+1. **Tests** : Vérification du code (flake8) et exécution des tests unitaires et d'intégration avec couverture minimale de 80%
+2. **Build Docker** : Création d'une image contenant l'application
+3. **Push sur Docker Hub** : Stockage de l'image créée sur DockerHub
+4. **Déclenchement Render** : Un hook Render pour déployer la nouvelle version
+
+### Configuration requise
+- Compte Docker Hub avec accès en écriture pour le repository configuré
+- Accès à Sentry (variable `SENTRY_DSN`)
+- Hook de déploiement Render disponible dans les secrets GitHub
+- Variables d'environnement nécessaires dans votre GitHub Secrets Actions (via *Settings > Secrets and variables*) :
+SECRET_KEY_DJANGO
+SENTRY_DSN
+DOCKERHUB_USERNAME
+DOCKERHUB_PASSWORD
+DOCKER_IMAGE_NAME
+RENDER_HOOK
+
+### Instructions de déploiement
+1. **Pré-requis** : 
+  - vos secrets GitHub décrits précédemment
+2. **Déploiement automatique** :
+  - Effectuez un push vers la branche `main`
+  - Le workflow GitHub déclenche les étapes de CI/CD
+  - Vérifiez le statut des jobs sur [GitHub Actions](https://github.com/[votre_repo]/actions)
+3. **Validation post-déploiement** :
+  - Accédez à l'URL du serveur Render pour vérifier le fonctionnement
+
+
+---
+
+### Variables d'environnement
+Créez un fichier `.env` avec les paramètres suivants :
+
+```env
+DEBUG=True  # Définir à False en production
+SECRET_KEY=django-insecure-... (généré via `django SECRET_KEY`)
+SENTRY_DSN=https://xxx@o123.ingest.sentry.io/456
+DATABASE_ENGINE=sqlite3  # sqlite par défaut, changer pour postgres/mysql en prod
+ALLOWED_HOSTS=localhost,127.0.0.1,yourdomain.com
+```
+
+---
+
 ## Procédures Manuelles
 
 1. **Lancer le conteneur** :
    ```bash
-   docker run --name oc_lettings_container \
-     -e SENTRY_DSN=$SENTRY_DSN \
-     -p 8000:8000 [dockerhub-user]/oc-lettings:[tag]
+   docker run --name oclettings \
+     -e SENTRY_DSN="votre Sentry_DSN" \
+     -e SECRET_KEY="votre_Secret_key_Django" \
+     -p 8000:8000 [dockerhub-user]/oclettings:[tag]
    ```
 
 2. **Monitoring avec Sentry** :

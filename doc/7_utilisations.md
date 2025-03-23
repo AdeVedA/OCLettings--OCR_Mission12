@@ -15,11 +15,13 @@
    - Validation de nouveaux profils ou mises à jour des listings.
 
 3. **Développeur** :
+   - Mettez-vous à la racine du projet, activez l'environnement virtuel puis :
+   ```bash
+   # pour vérifier le linting :
+   flake8
+   ```
 
    ```bash
-   # Exécuter les tests
-   pytest --cov=lettings --cov=profiles --cov-report=html
-
-   # Vérifier le linting
-   flake8 oc_lettings_site lettings profiles
+   # pour éxecuter les tests (unitaires & intégration):
+   pytest
    ```
