@@ -5,6 +5,8 @@
 
 ### Pipeline CI/CD (GitHub Actions)
 
+![Pipeline CI/CD](https://github.com/AdeVedA/OCLettings--OCR_Mission12/blob/main/doc/CICD_pipeline.png)
+
 1. **Lint & Tests** :
    ```yaml
    jobs:

@@ -44,11 +44,13 @@
   - GitHub Actions pour le CI/CD
 
 ### 🔄 Pipeline CI/CD
-1. Tests automatisés (flake8 + pytest) sur chaque push sur `main`
-2. Build de l'image Docker si les tests réussissent
-3. Push de l'image Docker vers Docker Hub
-4. Déploiement automatique sur Render grâce à un hook configuré dans GitHub Secrets
+1. Linting Flake8 et Tests automatisés Pytest sur chaque push et PR sur `main`,
+si les tests réussissent et que leur couverture est ≥ 80% :
+2. Build de l'image Docker et Push de celle-ci sur Docker Hub,
+si tout se passe bien :
+3. Déploiement automatique sur Render grâce à un hook configuré dans GitHub Secrets
 
+![Pipeline CI/CD](doc/CICD_pipeline.png)
 ---
 
 ## ⚙️ Installation
