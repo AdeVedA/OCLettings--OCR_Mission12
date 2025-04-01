@@ -86,4 +86,4 @@ jobs:
 
     steps:
       - name: Déclencher le déploiement sur Render
-        run: curl "${{secrets.RENDER_HOOK}}:${{ github.sha }}"
+        run: curl "${{secrets.RENDER_HOOK}}&imgURL=docker.io/adeveda/oclettings:${{ github.sha }}"
